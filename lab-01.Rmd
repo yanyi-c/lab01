@@ -5,6 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+install.packages("magrittr") 
+install.packages("dplyr")    
+library(magrittr) 
+library(dplyr)
 
 ### Load packages and data
 
@@ -213,7 +217,7 @@ visitors %>%
 
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
+**There are more numbers smaller than the mean, and the rest of the numbers are much larger than the mean.**
 
 
 
@@ -246,8 +250,11 @@ _How many tourist attractions are there in each of the 4 nations? From this, dis
 
 
 ```{r Ex_l}
-#________ %>%
-#  ______(_______)
+visitors_with_nations %>%
+  group_by(nation) %>%
+  summarise(
+    n = IQR (nation)
+  )
 ```
 
 
